@@ -27,12 +27,13 @@ blockchain = [
   { "from_user" => "anthony", "to_user" => "ben", "amount" => 4500 },
   { "from_user" => "anthony", "to_user" => "evan", "amount" => 1750 }
 ]
-
+#empty arrays like we did for the poker one, pushing into them to create the final number
 ben = []
 brian = []
 evan = []
 anthony = []
 for transaction in blockchain
+ #I just get the feeling i could do this cleaner as another loop, but I'm not 100% sure how
   if transaction["to_user"] == "ben" 
     ben.push(transaction["amount"])
   end
