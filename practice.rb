@@ -28,39 +28,68 @@ blockchain = [
   { "from_user" => "anthony", "to_user" => "evan", "amount" => 1750 }
 ]
 #empty arrays like we did for the poker one, pushing into them to create the final number
-ben = []
-brian = []
-evan = []
-anthony = []
-for transaction in blockchain
- #I just get the feeling i could do this cleaner as another loop, but I'm not 100% sure how
-  if transaction["to_user"] == "ben" 
-    ben.push(transaction["amount"])
-  end
-  if transaction["to_user"] == "brian"
-    brian.push(transaction["amount"])
-  end
-  if transaction["to_user"] == "evan"
-    evan.push(transaction["amount"])
-  end
-  if transaction["to_user"] == "anthony"
-    anthony.push(transaction["amount"])
-  end
-  if transaction["from_user"] == "ben"
-    ben.push((transaction["amount"])*-1)
-  end
-  if transaction["from_user"] == "brian"
-    brian.push((transaction["amount"])*-1)
-  end
-  if transaction["from_user"] == "evan"
-    evan.push((transaction["amount"])*-1)
-  end
-  if transaction["from_user"] == "anthony"
-    anthony.push((transaction["amount"])*-1)
-  end
-end
+# for transaction in blockchain
+accounts = Hash.new
+# for transaction in blockchain
+transaction = { "from_user" => nil, "to_user" => "ben", "amount" => 20000 }
+
+
+user = transaction["to_user"] # "ben"
+user_gains = transaction["amount"] #2000
+
+current_total = accounts[user]
+# Ben                nil.     +    2000
+accounts[user] = current_total + user_gains 
+
+puts accounts
+# end
+
+
+ #  user_losses = transaction["from_user"]
+#  total = user[user_gains] - user[user_losses]
+
+
+# Give me a hash that says
+# "ben" => 20000
+user["ben"] = 2000
+user[:ben]
+
+
+
+# ben = []
+# brian = []
+# evan = []
+# anthony = []
+# for transaction in blockchain
+
+#  #I just get the feeling i could do this cleaner as another loop, but I'm not 100% sure how
+#   if transaction["to_user"] == "ben" 
+#     ben.push(transaction["amount"])
+#   end
+#   if transaction["to_user"] == "brian"
+#     brian.push(transaction["amount"])
+#   end
+#   if transaction["to_user"] == "evan"
+#     evan.push(transaction["amount"])
+#   end
+#   if transaction["to_user"] == "anthony"
+#     anthony.push(transaction["amount"])
+#   end
+#   if transaction["from_user"] == "ben"
+#     ben.push((transaction["amount"])*-1)
+#   end
+#   if transaction["from_user"] == "brian"
+#     brian.push((transaction["amount"])*-1)
+#   end
+#   if transaction["from_user"] == "evan"
+#     evan.push((transaction["amount"])*-1)
+#   end
+#   if transaction["from_user"] == "anthony"
+#     anthony.push((transaction["amount"])*-1)
+#   end
+# end
    
-puts "Ben, your total is #{(ben).sum}"
-puts "Brian, your total is #{(brian).sum}"
-puts "Evan, your total is #{(evan).sum}"
-puts "Anthony, your total is #{(anthony).sum}"
+# puts "Ben, your total is #{(ben).sum}"
+# puts "Brian, your total is #{(brian).sum}"
+# puts "Evan, your total is #{(evan).sum}"
+# puts "Anthony, your total is #{(anthony).sum}"
