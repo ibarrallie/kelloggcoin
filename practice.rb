@@ -6,6 +6,17 @@
 # of which represents a transfer of KelloggCoin from one user to another – transactions 
 # with no from_user are from the "ICO" (Initial Coin Offering)
 
+# Write code below that returns the number of KelloggCoin that each user has in their 
+# KelloggCoin "wallet".
+
+# It should print out:
+# Ben's KelloggCoin balance is 14000
+# Brian's KelloggCoin balance is 13000
+# Evan's KelloggCoin balance is 10350
+# Anthony's KelloggCoin balance is 2650
+
+# 👇👇👇 Your code HERE 👇👇👇
+
 blockchain = [
   { "from_user" => nil, "to_user" => "ben", "amount" => 20000 },
   { "from_user" => nil, "to_user" => "brian", "amount" => 20000 },
@@ -17,13 +28,38 @@ blockchain = [
   { "from_user" => "anthony", "to_user" => "evan", "amount" => 1750 }
 ]
 
-# Write code below that returns the number of KelloggCoin that each user has in their 
-# KelloggCoin "wallet".
-
-# It should print out:
-# Ben's KelloggCoin balance is 14000
-# Brian's KelloggCoin balance is 13000
-# Evan's KelloggCoin balance is 10350
-# Anthony's KelloggCoin balance is 2650
-
-# 👇👇👇 Your code HERE 👇👇👇
+ben = []
+brian = []
+evan = []
+anthony = []
+for transaction in blockchain
+  if transaction["to_user"] == "ben" 
+    ben.push(transaction["amount"])
+  end
+  if transaction["to_user"] == "brian"
+    brian.push(transaction["amount"])
+  end
+  if transaction["to_user"] == "evan"
+    evan.push(transaction["amount"])
+  end
+  if transaction["to_user"] == "anthony"
+    anthony.push(transaction["amount"])
+  end
+  if transaction["from_user"] == "ben"
+    ben.push((transaction["amount"])*-1)
+  end
+  if transaction["from_user"] == "brian"
+    brian.push((transaction["amount"])*-1)
+  end
+  if transaction["from_user"] == "evan"
+    evan.push((transaction["amount"])*-1)
+  end
+  if transaction["from_user"] == "anthony"
+    anthony.push((transaction["amount"])*-1)
+  end
+end
+   
+puts "Ben, your total is #{(ben).sum}"
+puts "Brian, your total is #{(brian).sum}"
+puts "Evan, your total is #{(evan).sum}"
+puts "Anthony, your total is #{(anthony).sum}"
