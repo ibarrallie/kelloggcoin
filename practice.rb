@@ -29,30 +29,22 @@ blockchain = [
 ]
 #empty arrays like we did for the poker one, pushing into them to create the final number
 # for transaction in blockchain
-accounts = Hash.new
+account_totals = Hash.new
 # for transaction in blockchain
-transaction = { "from_user" => nil, "to_user" => "ben", "amount" => 20000 }
+for transaction in blockchain
+  to_user = transaction["to_user"]
+  account_totals[to_user] = 0
+  from_user = transaction["from_user"]
+  account_totals[from_user] = 0
+end
 
-
-user = transaction["to_user"] # "ben"
-user_gains = transaction["amount"] #2000
-
-current_total = accounts[user]
-# Ben                nil.     +    2000
-accounts[user] = current_total + user_gains 
-
-puts accounts
-# end
-
-
- #  user_losses = transaction["from_user"]
-#  total = user[user_gains] - user[user_losses]
-
-
-# Give me a hash that says
-# "ben" => 20000
-user["ben"] = 2000
-user[:ben]
+for transaction in blockchain
+  to_user = transaction["to_user"]
+  account_totals[to_user] = account_totals[to_user] + transaction["amount"]
+  from_user = transaction["from_user"]
+  account_totals[from_user] = account_totals[from_user] - transaction["amount"]
+end
+puts account_totals
 
 
 
