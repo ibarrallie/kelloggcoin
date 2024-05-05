@@ -30,13 +30,7 @@ blockchain = [
 #empty arrays like we did for the poker one, pushing into them to create the final number
 # for transaction in blockchain
 account_totals = Hash.new
-# for transaction in blockchain
-for transaction in blockchain
-  to_user = transaction["to_user"]
-  account_totals[to_user] = 0
-  from_user = transaction["from_user"]
-  account_totals[from_user] = 0
-end
+account_totals.default = 0
 
 for transaction in blockchain
   to_user = transaction["to_user"]
